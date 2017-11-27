@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title{Homework\quad 10}
+\author{Li yutong\footnote{Student ID:1600011431}}
+\begin{document}
+\maketitle
+\section{Problem 1}
+    The Inequality is correct since
+    $$P(\cup_{i=1}^nA_i)\geq P(A_1)=1-P(A_1^c)\geq 1-\sum_{i=1}^n P(A_i^c)$$
+\section{Problem 2}
+    Assume $x_1,x_2,...,x_n$ are data from the treatment group,while\\
+     $y_1,y_2,...,y_n$ are data from the control group.\\
+     The pivotal quantity is $T=\frac{U}{V}\sim t(n+m-2)$ , where
+     $$U=\frac{\bar{X}-\bar{Y}-(\mu_X-\mu_Y)}{\sigma\sqrt{(\frac{1}{m}+\frac{1}{n})}}$$
+     $$V=\sqrt{[\frac{(n-1)S_x^2}{\sigma^2}+\frac{(m-1)S_y^2}{\sigma^2}]\frac{1}{m+n-2}}$$
+     Thus the level $1-\alpha$ confidence interval of $\mu_X-\mu_Y$ is
+     $$\bar{X}-\bar{y}\pm\sqrt{\frac{(n-1)S_x^2+(n-1)S_Y^2}{2n-2}(\frac{2}{n})}t_{2n-2}(1-\alpha)$$
+     Thus the expected length is
+     $$2\sqrt{\frac{2}{n}}t_{2n-2}(0.95)$$
+     Solving the equation and we get the minimal n is
+\section{Problem 3}
+    \subsection{}
+        Since the data in two groups are given independently, we assume that
+        $$Y\sim N(\mu_Y,\sigma^2)$$
+        $$X\sim N(\mu_X,\sigma^2)$$
+        thus we obtain
+        $$Y-X\sim N(\mu_Y-\mu_X,2\sigma^2)$$
+        $$\bar{Y}-\bar{X}\sim N(\mu_Y-\mu_X,\frac{2\sigma^2}{n})$$
+        which shows that
+        $$sd(\bar{Y}-\bar{X})=\sqrt{\frac{2}{n}}\sigma=\sqrt{2}$$
+    \subsection{}
+        The pivotal quantity
+        $$T=\frac{U}{V}\sim t_{48}$$
+        where $$U=\frac{\bar{Y}-\bar{X}-(\mu_Y-\mu_X)}{\sigma\sqrt{\frac{2}{n}}}$$
+        $$V=\sqrt{\frac{s_X^2+s_Y^2}{2\sigma^2}}$$
+        In this hypothesis test, we reject the null hypothesis when T is large, thus the rejection region becomes
+        $$\frac{\sqrt{n}(\bar{Y}-\bar{X})}{\sqrt{s_X^2+s_Y^2}}>t_{48}(0.95)$$
+    \subsection{}
+    The power of the test is
+    $$P(\frac{\sqrt{n}(\bar{Y}-\bar{X})}{\sqrt{s_X^2+s_Y^2}}>t_{48}(0.95)|\mu_Y=\mu_X+1)$$
+    in the discussion above we obtain
+    $$\bar{Y}-\bar{X}\sim N(1,2\sigma^2)$$
+    thus the power of the test is
+    $$\beta=\Phi(\frac{1}{\sqrt{2}}-\frac{\sqrt{\frac{s_X^2+s_Y^2}{2}}t_{48}(0.95)}{5})$$
+    \subsection{}
+    We would reject the null  hypothesis given $p=0.07$ and $\alpha=0.1$
+    \subsection{}
+    The rejection becomes
+    $$|\frac{\sqrt{n}(\bar{Y}-\bar{X})}{\sqrt{s_X^2+s_Y^2}}|>t_{48}(0.975)$$
+    and the power becomes
+    $$\beta=\Phi(\frac{1}{\sqrt{2}}-\frac{\sqrt{\frac{s_X^2+s_Y^2}{2}}t_{48}(0.975)}{5})+\Phi(-\frac{1}{\sqrt{2}}-\frac{\sqrt{\frac{s_X^2+s_Y^2}{2}}t_{48}(0.975)}{5})$$
+
+\section{Problem 4}
+    According to the problem, the joint distribution of x and y is
+    $$f(x,y)=\frac{1}{2\pi\sigma_x\sigma_y}e^{-(\frac{{(x-\mu_x)}^2}{2\sigma_x^2}+\frac{{(y-\mu_y)}^2}{2\sigma_y^2})}$$
+    thus
+    $$\pi=P(X<Y)=\int_{-\infty}^\infty\int_{-\infty}^y f(x,y)dxdy$$
+    Let $Z=Y-X$ thus
+    $$\pi=\int_{0}^\infty\int_{-\infty}^\infty f(x,z-x)dxdz$$
+    $$\pi=1-\Phi(\frac{\mu_x-\mu_y}{\sqrt{\sigma_x^2+\sigma_y^2}})$$
+\section{Problem 5}
+    According to the data, if the data were given in pairs,we have
+    $$\bar(X)-\bar(Y)=0.44$$
+    $$s_{\bar{X}-\bar{Y}}=4.63$$
+    Otherwise, assume that two samples were independent,we obtain
+    $$s_{\bar{X}-\bar{Y}}=21.00$$
+    Under the first assumption, the level $1-\alpha$ confidence interval is ($\alpha=0.05$)
+    $$0.44\pm4.63\times t_{n-1}(0.95)/\sqrt{n}=[-1.66,2.54]$$
+    Or Under the independent assumption, the level $1-\alpha$ confidence interval is
+    $$[-12.84,13.72]$$
+\end{document}

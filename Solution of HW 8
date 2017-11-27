@@ -1,0 +1,83 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass{article}
+\title{Homework 9}
+\author{Li Yutong\footnote{Student ID 1600011431}}
+\begin{document}
+\maketitle
+\section{Problem 1}
+	\subsection{}
+		The likelihood function is $$L(\theta|x)={(\sqrt{\frac{1}{2\pi\sigma_Y^2}})}^n e^{-\frac{\sum x_i^2}{2\sigma_Y^2}}{(\sqrt{\frac{1}{2\pi\sigma_Y^2}})}^n e^{-\frac{\sum y_i^2}{2\sigma_Y^2}}$$
+		Thus, the MLEs of $\sigma_X$ and $\sigma_Y$ are
+		$$\hat{\sigma_X}=\frac{1}{n}\sum x_i^2$$
+		$$\hat{\sigma_Y}=\frac{1}{n}\sum y_i^2$$
+		Under $H_0$ ,the MLEs are
+		$$\hat{\sigma_X^{'}}=\lambda_0\hat{\sigma_Y^{'}}=\frac{\sum x_i^2+\sum y_i^2/\lambda_0}{n+m}$$
+		Therefore, we obtain the LRT:
+		$$\lambda(x)=C \frac{{(\sum x_i^2)}^n{(\sum y_i^2)/\lambda_0}^m}{{(\sum x_i^2+\sum y_i^2/\lambda_0)}^{n+m}}$$
+		where C is a constant.
+		the rejection region is $$\lambda(x)<c$$ where c is another constant.
+	\subsection{}
+		The rejection region can be written as
+		$$\frac{1}{{(1+f)}^n{(1+1/f)}^m}<c$$
+		hat is, $$f>c_1\cup f<c_2$$
+		where $$f=\frac{\sum y_i^2/\lambda_0}{\sum x_i^2}$$
+		since $$f^{'}=\frac{\sum y_i^2/(\sigma_Y^m m)}{\sum x_i^2/(\sigma_X^n n)}=\frac{\sum y_i^2/(\lambda_0^m m)}{\sum x_i^2 /n} \sim F(m,n)$$
+		Thus we obtain the rejection region
+		$$(f^{'}>F(m,n)_{1-\alpha/2})\cup (f^{'}<F(m,n)_{\alpha/2})$$
+	\subsection{}
+		The level $1-\alpha$ acceptance region is
+		$$F(m,n)_{\alpha/2}<\frac{\sum y_i^2/(\lambda_)^m m)}{\sum x_i^2/n}<F(m,n)_{1-\alpha/2}$$
+		that is $${(\frac{\sum y_i^2/m}{\sum x_i^2/(n F(m,n)_{1-\alpha/2})})}^\frac{1}{m}<\lambda_0<{(\frac{\sum y_i^2/m}{\sum x_i^2/(n F(m,n)_{\alpha/2})})}^\frac{1}{m}$$
+		which is the level $1-\alpha$ confidence region of $\lambda_0$
+\section{Problem 2}
+	\subsection{}
+	Since $x_1,x_2,...,x_n\sim N(\theta,\theta)$ , $\frac{\sqrt{n}(\bar{X}-\theta)}{\sqrt{\theta}}\sim N(0,1)$
+	which means $\frac{\sqrt{n}\bar{X}-\theta}{\sqrt{\theta}}$ is pivotal quantitty
+	\subsection{}
+	Since $\frac{\sqrt{n}\bar{X}-\theta}{\sqrt{\theta}}\sim N(0,1)$ , the level $1-\alpha$ confidence interval is
+	$$-Z_{1-\alpha/2}<\frac{\sqrt{n}(\bar{X}-\theta)}{\sqrt{\theta}}<Z_{1-\alpha/2}$$
+	that is
+	$${(\frac{2\bar{X}}{\sqrt{Z_{1-\alpha/2}^2/n+4\bar{X}}+Z_{1-\alpha/2}/\sqrt{n}})}^2<\theta<{(\frac{2\bar{X}}{\sqrt{Z_{1-\alpha/2}^2/n+4\bar{X}}-Z_{1-\alpha/2}/\sqrt{n}})}^2$$
+	\subsection{}
+	Since $\frac{\sqrt{n}\bar{X}-\theta}{\sqrt{\theta}}\sim N(0,1)$, Using Markov's Inequality, we have
+	$$P(\frac{\sqrt{n}}{\sqrt{\theta}}|\bar{X}-\theta|>\epsilon)<\frac{1}{\epsilon^2}$$
+	Let $\epsilon=\frac{1}{\sqrt{\alpha}}$ we can obtain the level $1-\alpha$ confidence interval
+	$${(\frac{2\bar{X}}{\sqrt{1/\alpha+4\bar{X}}+1/\sqrt{n\alpha}})}^2<\theta<{(\frac{2\bar{X}}{\sqrt{1/\alpha+4\bar{X}}-1/\sqrt{n\alpha}})}^2$$
+\section{Problem 3}
+	Since $\frac{\sqrt{n}(\bar{X}-\theta_0)}{\sigma}\sim N(0,1)$
+	The acceptance region of the level $1-\alpha$ test is
+	$$\bar{X}-\frac{\sigma}{\sqrt{n}}Z_{1-\alpha/2}<\theta_0<\bar{X}+\frac{\sigma}{\sqrt{n}}Z_{1-\alpha/2}$$
+\section{Problem 4}
+	\subsection{}
+	The likelihood function is $$L(\theta|x)=\prod_{i=1}^n\frac{\lambda^{x_i}}{x_i!}e^{-\lambda}$$
+	thus the mle of $\lambda$ is $\lambda=\bar{x}$
+	therefore, the LRT is $$\lambda(X)=\prod_{i=1}^n\frac{\lambda_0^{x_i}}{\bar{X}^{x_i}}\frac{e^{-\lambda_0}}{e^{-\bar{X}}}$$
+	the rejection region is $\lambda(x)<c$ ,that is
+	$$Y+Y\ln(\frac{n\lambda_0}{Y})<c$$
+	or equivalently
+	$$Y<c_1 \cup Y>c_2$$
+	according Markov's Inequality
+	$$P(|Y-n\lambda_0|>\epsilon)\leq\frac{Var(Y-n\lambda_0)}{\epsilon^2}$$
+	Let $\epsilon=\sqrt{n\lambda_0/\alpha}$ then we obtain level $1-\alpha$ confidence interval
+	$$(\sqrt{Y+1/4\alpha}+\sqrt{1/4\alpha})\frac{1}{\sqrt{n}}<\lambda_0<(\sqrt{Y+1/4\alpha}+\sqrt{1/4\alpha})\frac{1}{\sqrt{n}}$$
+	\subsection{}
+		Sorry, this question is beyond me.
+\section{Problem 5}
+	Since $\frac{\sqrt{n}(\bar{X}-\theta_0)}{\sigma}\sim N(0,1)$ \\
+	The level $1-\alpha$ confidence interval is
+	$$\bar{X}-\frac{\sigma}{\sqrt{n}}Z_{1-\alpha/2}<\mu<\bar{X}-\frac{\sigma}{\sqrt{n}}Z_{1-\alpha/2}$$
+	To require the standard, there must be
+	$$\frac{2\sigma}{\sqrt{n}}Z_{1-\alpha/2}<\sigma/4$$
+	which means $$n\geq16 Z_{1-\alpha/2}^2=43.2887$$x
+	thus the minimal n is 44
+\section{Problem 6}
+	\subsection{}
+	When $\sigma$ is known, the level $\alpha$ confidence interval is $$\bar{X}-\frac{\sigma}{\sqrt{n}}Z_{1-\alpha/2}<\mu<\bar{X}+\frac{\sigma}{\sqrt{n}}Z_{1-\alpha/2}$$
+	Thus the expected length is $$\frac{2\sigma}{\sqrt{n}}Z_{1-\alpha/2}$$
+	\subsection{}
+	Since $\frac{\sqrt{n}(\bar{x}-\mu)}{S/\sqrt{n}}\sim t(n-1)$
+	The level $\alpha$ confidence interval is
+	$$\bar{X}-\frac{S}{\sqrt{n}}t_{1-\alpha/2}(n-1)<\mu<\bar{X}+\frac{S}{\sqrt{n}}t_{1-\alpha/2}(n-1)$$
+	thus the expected length is  $$\frac{2\sigma}{\sqrt{n}}t_{1-\alpha/2}(n-1)$$
+	which equals to the known case when n is large.
+\end{document}

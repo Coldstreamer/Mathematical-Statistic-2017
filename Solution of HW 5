@@ -1,0 +1,99 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass {article}
+\usepackage{amsmath}
+\title{Homework\quad 5}
+\begin{document}
+\maketitle
+\section{Problem 1}
+	\subsection{} We have $L(\theta,\hat{\theta})=|\theta-\hat{\theta}|$, thus the posterior risk is
+				\begin{align}
+				r(\hat{\theta}|x^n)&=\int |\theta-\hat{\theta}|\pi(\theta|x^n)d\theta \\
+							 &= \int_{\hat{\theta}}^{\infty}\theta\pi(\theta|x^n)d\theta- \int^{\hat{\theta}}_{-\infty}\theta\pi(\theta|x^n)d\theta -
+							 	\int_{\hat{\theta}}^{\infty}\hat{\theta}\pi(\theta|x^n)d\theta +\int^{\hat{\theta}}_{-\infty}\hat{\theta}\pi(\theta|x^n)d								\theta
+				\end{align}
+				Notice that $$\frac{\partial r(\hat{\theta}|x^n)}{\partial \hat{\theta}}
+				=\int^{\hat{\theta}}_{-\infty}\pi(\theta|x^n)d\theta-\int_{\hat{\theta}}^{\infty}\pi(\theta|x^n)d\theta$$
+				thus, the median of posterior $\pi(\theta|x)$ minimize $r(\hat{\theta}|x)$, \\
+				therefore the Bayes estimator is the median of the posterior $\pi(\theta|x)$
+	\subsection{}    the posterior risk is $$r(\hat{\theta}|x^n) =\int L(\theta,\hat{\theta})\pi(\theta|x^n)d\theta =1-\int L^\dag (\theta,\hat{\theta})\pi(\theta|x^n)d\theta $$
+				where $$L^\dag=1-L=I(\theta\neq\hat{\theta})$$
+				To minimize the posterior risk, that is, to maximize $L^\dag(\theta,\hat{\theta})$,
+				Using the Inequality $$\int L^\dag (\theta,\hat{\theta})\pi(\theta|x^n)d\theta\leq\max_{\theta}\pi(\theta|x^n)\int L^\dag(\theta,\hat{\theta})d\theta$$
+				It is clear that the mode of the posterior minimize the posterior risk. \\
+				Thus, the Bayes estimator is $\max_{\theta}\pi(\theta|x^n)$
+\section{Problem 2}
+	\subsection{}
+		\paragraph{minimax}
+				Minimax estimator $\hat{\theta}$ satisfies $$\hat{\theta} = argmin_{\theta} \pi (\theta|x^n) $$
+		\paragraph{Bayes}
+				Bayes estimator $\hat{\theta}$ satisfies
+				\begin{align}
+				\hat{\theta} &= argmin_{\theta} R_{\pi}(\theta)\quad w.r.t. \pi(\theta) \\
+						&= argmin_{\theta^\dag}(\int R(\theta,\theta^\dag)\pi(\theta)d\theta) \\
+				\end{align}
+	\subsection{}
+		There is an example. Consider $X\sim Bernoulli(p)$, and two estimator $X_1=\bar{X}$ and $X_2=\frac{\sum_{i=1}^n X_i +\frac{\sqrt{n}}{2}}{\sqrt{n}+n}$, and the Lost function is 		$L_2$. \\
+		According to the theorem, $X_2$ is the minimax theorem but is not always better than the Bayes estimator $X_1$ (w.r.t a uniform prior).			
+		
+\section{Problem 3}
+	\subsection{}
+		The posterior distribution is $$\pi(\theta|x^n)=\frac{\int p^x{(1-p)}^{n-x} p^\alpha {(1-p)}^{\beta-1}}{m(x)}dp \sim beta(X +\alpha,n-X +\beta)$$
+		thus the posterior risk is
+		\begin{align}
+		r(\hat{\theta}|x) &=\int {(\theta-\hat{\theta})}^2 \pi(\theta|x^n)d\theta \\
+					&= \frac{B(X +\alpha+2,n-X +\beta)}{B(X +\alpha,n-X +\beta)}-2\hat{\theta}\frac{B(X +\alpha+1,n-X +\beta)}{B(X +\alpha,n-X +\beta)}+{\hat{\theta}}^2 \\
+		\end{align}
+		Therefore, to minimize the risk ,we get the Bayes estimator
+		$$\hat{\theta}=\frac{B(X +\alpha+1,n-X +\beta)}{B(X +\alpha,n-X +\beta)}$$
+		that is,
+		$$\hat{\theta}=\frac{X +\alpha}{n+\alpha+\beta}$$
+	 	We can calculate the risk function:
+		\begin{align}
+		  R(\theta,\hat{\theta}) &=E_{\theta}(L(\theta,\hat{\theta})) \\
+						  &=p^2 -\frac{2(\alpha+np)p}{n+\alpha+\beta}+\frac{\alpha^2+2\alpha np+n^2p^2+np(1-p)}{{(n+\alpha+\beta)}^2}
+		\end{align}
+		Thus the Bayes risk is
+		\begin{align}
+			R_{\pi}(\theta)&=\int R(\theta,\hat{\theta})\pi(\theta)d\theta \\
+					     &= \frac{\alpha\beta}{(\alpha+\beta)(\alpha+\beta+1)(\alpha+\beta+n)}
+		\end{align}
+	\subsection{}
+		The posterior distribution is $$\pi(\theta|x^n)\sim N(\frac{xb^2+\sigma^2a}{\sigma^2+a^2},\frac{\sigma^2a^2}{\sigma^2+a^2})$$
+		thus the posterior risk is
+		\begin{align}
+		r(\hat{\theta}|x) &=\int {(\theta-\hat{\theta})}^2 \pi(\theta|x^n)d\theta \\
+				&= \hat{\theta}^2-2\hat{\theta}\frac{xb^2+\sigma^2a}{\sigma^2+b^2}+\int \theta^2\pi(\theta|x)d\theta\\
+		\end{align}
+		Therefore, to minimize the risk ,we get the Bayes estimator
+		$$\hat{\theta}=\frac{xb^2+\sigma^2a}{\sigma^2+b^2}$$
+	 	We can calculate the risk function:
+		\begin{align}
+		  R(\theta,\hat{\theta}) &=E_{\theta}(L(\theta,\hat{\theta})) \\
+						  &=\theta^2-2\theta\frac{\theta b^2+\sigma^2a}{\sigma^2+b^2}+\frac{\sigma^4a^2+2b^2\sigma^2a\theta+b^4(\theta^2+\sigma^2)}{{(\sigma^2+b^2)}^2}
+		\end{align}
+		Thus the Bayes risk is
+		\begin{align}
+			R_{\pi}(\theta)&=\int R(\theta,\hat{\theta})\pi(\theta)d\theta \\
+					     &= \frac{\sigma^2b^2}{\sigma^2+b^2}
+		\end{align}
+\section{Problem 4}
+	The risk function is $$R(\theta,\hat{\theta})=E_{\theta}(L(\theta,\hat{\theta}))$$
+	Assume the joint pdf of $x^n$ is $f(x^n|\theta)$, then we have
+	$$R(\sigma,bS^2)=\int (\frac{bS^2}{\sigma^2}-1-\ln \frac{bS^2}{\sigma^2})f(x^n|\sigma^2)dx^n$$
+	Thus $$\frac{\partial R}{\partial b}=\frac{ES^2}{\sigma^2}-\frac{1}{b}=0 \Rightarrow b=\frac{\sigma^2}{ES^2}=1$$
+	It is easy to find that $b=1$ is the minimal point of the risk function, \\
+	Therefore $b=1$ minimize the risk for all the $\sigma$
+\section{Problem 5}
+    \subsection{}
+    The loss function is $L(\theta,\hat{\theta})={(\theta-\hat{\theta})}^2$
+    thus,the risk function is $$R(\theta,\hat{\theta})=E_{\theta}L(\theta,\hat{\theta})={(\theta-3)}^2$$
+    Suppose $\hat{\theta}$ is inadmissible,that is, there were another estimator $\hat{\theta}^\dag $satisfies
+    $$R(\theta,\hat{\theta}^\dag) \leq R(\theta,\hat{\theta})$$ and for at least one $\theta$ $$R{(\theta,\hat{\theta}^\dag)} < R(\theta,\hat{\theta})$$
+    However, since we use squared error loss, the risk function of $\hat{\theta}^\dag$ is
+    $$R(\theta,\hat{\theta}^\dag)={(\theta-E{\hat{\theta}^\dag})}^2+Var(\hat{\theta}^\dag)$$
+    and we must have $$R(3,\hat{\theta}^\dag)=0$$
+    which obtain $Var(\hat{\theta}^\dag)=0$, that is, $\hat{\theta}^\dag$ is a constant,which contradicts our previous assumption. \\
+    Therefore, $\hat{\theta}$ is admissible.
+    \subsection{}
+    $\hat{\theta}$ is not a good estimator because $$\sup_{\theta}(R(\theta,\hat{\theta}))=\infty$$
+\end{document}

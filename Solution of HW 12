@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\title{Homework\quad 12}
+\author{Li Yutong\footnote{Student ID 1600011431}}
+\begin{document}
+\maketitle
+\section{Problem 1}
+    \subsection{}
+    Doing the linear regression, we obtain the formula
+    $$\hat{y}=-0.01588+0.89397x$$
+    The plot is shown below.
+    \begin{figure}[H]
+    \includegraphics[width=0.9\textwidth]{hw1211.jpeg}
+    \end{figure}
+    \subsection{}
+    Doing the linear regression, we obtain the formula
+    $$\hat{x}=0.01435+1.0588y$$
+    The plot is shown below.
+    \begin{figure}[H]
+    \includegraphics[width=0.9\textwidth]{hw1212.jpeg}
+    \end{figure}
+    \subsection{}
+        The two lines are different.
+        In subquestion 1, the linear model is
+        $$Y=a+bX+\epsilon_1$$
+        while another model is
+        $$X=c+dX+\epsilon_2$$
+        Thus the regression line can be different.
+\section{Problem 2}
+        The least square method is to minimize the loss function
+        $$\sum_{i=1}^n e_i^2=\sum_{i=1}^n{(y_i-\mu)}^2$$
+        Notice that
+        $$\sum_{i=1}^n{(y_i-\mu)}^2=\sum_{i=1}^n{(y_i-\bar{y})}^2+n{(\bar{y}-\mu)}^2$$
+        Therefore $\bar{y}$ is the least square estimate of $\mu$
+\section{Problem 3}
+    \subsection{}
+        The new model is
+        $$z_i=u_i\beta_0+v_i\beta_1+\delta_i$$
+        This is a linear model, and the error term $\delta_i$ is normally distributed and independent of $u_i$ and $\beta_1$, which suggests it satisfied the assumptions of the standard linear model.
+    \subsection{}
+        To minimize $\sum{({z_i-u_i\beta_0-v_i\beta_1)}^2}$, using the multiple regression formula,we obtain
+        $$\beta={(X^TX)}^{-1}X^TZ$$
+        where
+        $$\beta=(\beta_0,\beta_1)^T$$
+        $$X={\left(
+            \begin{matrix}
+            u_1&u_2&...&u_n \\
+            v_1&v_2&...&v_n
+            \end{matrix}\right)}^T
+        $$
+        $$Z=(z_1,z_2,...,z_n)^T$$
+    \subsection{}
+        Doing the regression in the new model, we minimize the quantity
+        $$\sum_{i=1}^n{(z_i-u_i\beta_0-v_i\beta_1)}^2$$
+        that is, we minimize
+        $$\sum_{i=1}^n{(y_i-\beta_0-x_i\beta_1)}^2\rho_i^{-2}$$
+    \subsection{}
+        In previous we obtain $\beta={(X^TX)}^{-1}X^TZ$, that is
+        $$\beta_0=\sum_j(\frac{\sum v_i^2u_j-\sum u_iv_iv_j}{[\sum{u_i^2v_i^2}-{(\sum{u_iv_i})}^2]})z_j$$
+        $$\beta_1=\sum_j(\frac{\sum u_i^2v_j-\sum v_iu_iu_j}{[\sum{u_i^2v_i^2}-{(\sum{u_iv_i})}^2]})z_j$$
+        Thus
+        $$Var(\beta_0)=\sum_j(\frac{\sum v_i^2u_j-\sum u_iv_iv_j}{[\sum{u_i^2v_i^2}-{(\sum{u_iv_i})}^2]})^2\sigma^2$$
+        $$Var(\beta_1)=\sum_j(\frac{\sum u_i^2v_j-\sum v_iu_iu_j}{[\sum{u_i^2v_i^2}-{(\sum{u_iv_i})}^2]})^2\sigma^2$$
+        Notice that when $\rho_i=1$, the formula becomes
+        $$Var(\beta_0)=\sigma^2(\frac{1}{n}+\frac{\bar{x}^2}{\sum(x_i^2\bar{x})^2})$$
+        $$Var(\beta_1)=\frac{\sigma^2}{\sum(x_i-\bar{x})^2}$$
+\section{Problem 4}
+    Assume $$ e_i\sim N(0,\sigma^2)$$ therefore
+    $$Y_i\sim N(\beta_0+\beta_1X,\sigma^2)$$
+    Thus the likelihood function is
+    $$L(\theta|x)=(\frac{1}{2\pi\sigma^2})^\frac{n}{2}e^{-\frac{\sum(y_i-\beta_0-\beta_1x_i)^2}{2\sigma^2}}$$
+    Thus MLE is
+    $$(\beta_0,\beta_1)=argmin\sum_{i=1}^n(y_i-\beta_0-\beta_1x_i)^2$$
+    which is the least square result.
+\section{Problem 5}
+    In the previous question we obtained that
+    $$Var(\beta_1)=\frac{\sigma^2}{\sum(x_i-\bar{x})^2}$$
+    In order to minimize $Var(\beta_1)$, we must let $S_x^2$ as large as possible,which is equivalently as X as sparse as possible.
+    Thus when $x_i=\frac{i-1}{n-1}$, $Var(\beta_1)$ is minimal.
+\section{Problem 6}
+    \subsection{}
+    We set the model to be
+    $$Y=\beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3$$
+    where $x_1$,$x_2$,$x_3$ are the return of MacDonalds,Schlumberger and Haliburton.
+    The regression result is
+    $\beta_0=0.09393$,$\beta_1=-0.88235$,$\beta_2=1.31136$,$\beta_3=-0.16905$ \\
+    The standard deviation and R-square are
+    $se(Residual)=0.1254$, $R^2=0.6296$
+    \subsection{}
+    According to the regression, the predicted result is
+    $$Disney=(0.10593,0.06239,0.28838,0.213436,0.10285)$$
+    Thus the standard deviation of the prediction error is 0.1671
+    Since the standard deviation of the regression residual is 0.1254, thus the p-value is about 0.09. Thus the prediction error can be explained in term of randomness, which also suggests there is no strong evidence suggests that the fundamental nature of the relationships has changed
+\end{document}

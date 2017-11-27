@@ -1,0 +1,25 @@
+#Problem 1
+Group1 <- c(279, 338, 334, 198, 303)
+Group2 <- c(378, 275, 412, 265, 286)
+Group3 <- c(172, 335, 335, 282, 250)
+Group4 <- c(381, 346, 340, 471, 318)
+x <- data.frame(Group1, Group2, Group3, Group4)
+boxplot(x)
+F.test(x)
+Group <- c(Group1, Group2, Group3, Group4)
+label <-
+  as.factor(c(1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4))
+f <- data.frame(Group, label)
+anova1 <- aov(Group ~ label, data = f)
+summary(anova1)
+
+#Problem 2
+Type1 <- c(1.7,1.9,6.1,12.5,16.5,25.1,30.5,42.11,82.5)
+Type2 <- c(13.6,19.8,25.2,46.2,46.2,61.1)
+Type3 <- c(13.4,20.9,25.1,29.7,46.9)
+Type <- c(Type1,Type2,Type3)
+laabe <-as.factor(c(rep(1,length(Type1)),rep(2,length(Type2)),rep(3,length(Type3))))
+ff <- data.frame(Type,label)
+anova2 <- aov(Type~laabe)
+summary(anova2)
+boxplot(Type1,Type2,Type3)

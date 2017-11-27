@@ -1,0 +1,17 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass{ctexart}
+\title{Homework  6}
+\author{Li yutong\footnote{student ID 1600011431}}
+\begin{document}
+\maketitle
+	\section{Problem 1}
+		The pdf of $X_1,X_2,...,X_n$ is
+		$$f(x_1,x_2,...,x_n)=\frac{1}{\theta^n}I(\min_i(x_i)\geq0)I(\max_i(x_i)\leq\theta)$$
+		therefore, the pdf of the order statistic $X_{(1)},X_{(2)},...,X_{(n)}$ is
+		$$g(x_{(1)},x_{(2)},...x_{(n)})=\frac{n!}{\theta^n}I(\min_i(x_i)\geq0)I(\max_i(x_i)\leq\theta)$$
+		and the marginal distribution of $X_{(n)}$ is
+		$$f(x_{(n)})=\int\int...\int g(x_{(1)},x_{(2)},...x_{(n)})=\frac{nx_{(n)}^{n-1}}{\theta^n}I(x_{(n)}>\theta)$$
+		thus we can obtain
+		$$E(x_{(n)}-\theta)^2=\frac{2\theta^2}{(n+1)(n+2)}\rightarrow0$$
+		which denote $\hat{\theta}\rightarrow_{p}\theta$
+\end{document}

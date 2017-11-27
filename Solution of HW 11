@@ -1,0 +1,30 @@
+%homework11
+\documentclass{article}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\title{Homework\quad 11}
+\author{Li Yutong\footnote{Student ID 1600011431}}
+\begin{document}
+\maketitle
+\section{Problem 1}
+    The box plot is shown below, from the graph we observe that there is no significance difference.
+    \begin{figure}[H]
+        \centering
+        % Requires \usepackage{graphicx}
+        \includegraphics[width=0.9\textwidth]{hw111.jpeg}\\
+        %\caption{}\label{}
+    \end{figure}
+    Doing a F-test, we obtain the p-value is $p=0.119$
+    which also suggests there is no significant difference.
+\section{Problem 2}
+    Doing the anova, we find out the p-value is 0.617, thus there is no significant difference.
+    The box plot is also shown below,which also confirms the result.
+\begin{figure}[H]
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=0.9\textwidth]{hw1112.jpeg}\\
+  %\caption{}\label{}
+\end{figure}
+
+\end{document}

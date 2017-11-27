@@ -1,0 +1,178 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{graphicx}
+\title{Homework\quad3}
+\author{Li Yutong\footnote{Student ID:1600011431}}
+\begin{document}
+\maketitle
+\section{Problem 1}
+    Since the variables are poisson distributed,we have $$P(X=k;\lambda)=\frac{{\lambda}^k}{k!}e^{-\lambda}$$
+    Using the moments method to estimate the parameter $\lambda$, we have:
+    $$EX=\sum_{i=1}^{\infty}k\frac{{\lambda}^k}{k!}e^{-\lambda}=\lambda$$
+    thus, the estimation of $\lambda$ is $$\lambda=\bar{x}=0.837$$
+    Therefore,we can calculate the expected values:
+    $$E(n=0)=NP(X=0|\lambda)=5268.6$$
+    $$E(n=1)=NP(X=1|\lambda)=4410.5$$
+    $$E(n=2)=NP(X=2|\lambda)=1840.1$$
+    $$E(n=3)=NP(X=3|\lambda)=515.1$$
+    $$E(n=4)=NP(X=4|\lambda)=107.8$$
+    $$E(n=5+)=NP(X\geq5;\lambda)=20.9$$
+    To calculate the goodness of fit, we use R to do a chi-squared test:
+    \paragraph{Codes}
+				\begin{figure}[H]
+				\includegraphics[width=0.8\linewidth]{3.png}
+				\end{figure}
+			\paragraph{The result}
+				\begin{figure}[H]
+				\includegraphics[width=0.8\linewidth]{4.png}
+				\end{figure}
+    Therefore the expected value matches the observed ones.
+\section{Problem 2}
+    \subsection{}Using the method of moments, we have:
+                \begin{align}
+                \bar{X} &= EX \\
+                        &=\frac{1}{3}\theta+\frac{4}{3}(1-\theta)+1-\theta \\
+                        &=\frac{7}{3}-2\theta
+                \end{align}
+                thus, $$\hat{\theta}=\frac{7}{6}-\frac{\bar{x}}{2}=\frac{5}{12}$$
+    \subsection{}We have
+                \begin{align}
+                    \sigma  &= \sqrt{Var(\hat{\theta})} \\
+                            &= \sqrt{\frac{1}{4n}Var{X }} \\
+                            &= \sqrt{\frac{1}{4n}(\frac{2}{9}+4\theta-4{\theta}^2)} \\
+                            &= \sqrt{\frac{1}{18n}+\frac{\theta}{n}-\frac{{\theta}^2}{n}} \\
+                            &= 0.1728
+                \end{align}
+    \subsection{} According to the problem, we have the pmf of x is
+                    $$P(X|\theta)={(\frac{2}{3}\theta)}^2{(\frac{1}{3}\theta)}^3{(\frac{2}{3}(1-\theta))}^3{(\frac{1}{3}(1-\theta))}^2$$
+                    Then the likelihood function is
+                    $$L(\theta)=C(X)P(X|\theta)$$
+                    where $C(X)$ is a function of X
+                    Then we can let $$L(\theta)=\theta^5{(1-\theta)}^5$$ where $0\leq\theta\leq1$\\
+                    Obviously $\theta=\frac{1}{2}$ maximize the likelihood function,which implies $$\hat{\theta}_{MLE}=\frac{1}{2}$$
+    \subsection{}
+    		Let $n_i$ be the number of variables whose value is i , i=0,1,2,3 //
+		Then ,according to 3, the MLE is $$\hat{\theta}=\frac{n_0+n_1}{N}$$
+		According to the problem, $P(\frac{n_0+n_1}{N})=\theta$
+		Then $$MSE=Var(\hat{\theta})=\frac{\theta(1-\theta)}{n}$$
+		Thus $$\sigma=\sqrt{\theta(1-\theta)}{n}=0.158$$
+    \subsection{}
+        We already have the likelihood function $$L(\theta)=C(X)P(X|\theta)$$ ,where $0\leq\theta\leq1$\\
+        thus the posterior pdf of $\theta$ is:
+        \begin{align}
+            \pi(\theta|X)&=\frac{L(\theta)p(\theta)}{\int L(\theta)p(\theta)d\theta} \\
+                         &=\frac{\theta^5{(1-\theta)}^5}{132}
+        \end{align}
+        where $p(\theta)$ is the prior pdf of $\theta$
+\section{Problem 3}
+    \subsection{} The log- likelihood function is
+    			$$I(p|X)=k\ln p+(n-k)\ln (1-p)$$
+			In the interior, $$\frac{\partial I}{\partial p}=0 \Rightarrow p=\frac{X}{n}$$
+			It is easy to check that $$p=\frac{X}{n}$$ is the maximum point.
+			On the boundary, the log-likelihood function goes to $-\infty$,
+			Thus the MLE of p is $\hat{p}=\frac{X}{n}$
+    \subsection{}From Cramer-Rao Inequality, we have
+                \begin{align}
+                    Var{T}&\geq\frac{{\frac{d}{d\theta}E_\theta(\bar{p})}^2}{E_\theta({(\frac{\partial}{\partial\theta}(\ln f(x|\theta)))}^2)} \\
+                            &\geq \frac{1}{\frac{n}{p(1-p)}}\\
+                            &\geq \frac{p(1-p)}{n}
+                \end{align}
+                but
+                $$Var(\hat{p})=\frac{Var(X)}{n^2}=\frac{p(1-p)}{n}$$
+                which is exactly the lower bound of the inequality
+    \subsection{}
+                The log-likelihood function is
+                \begin{align}
+                    I(p)&=\ln L(p)\\
+                        &= \ln C(X)P(X|p)\\
+                        &= C(X)+\ln P(X|p)\\
+                        &= x\ln p+ (n-x)\ln p\\
+                        &= 5\ln p+ 5\ln (1-p)
+                \end{align}
+                The Graphic:
+                \begin{figure}[H]
+				\includegraphics[width=0.8\linewidth]{p.png}
+		\end{figure}
+\section{Problem 4}
+    \subsection{} Using methods of moments:
+                    \begin{align}
+                    EX&=\sum_{k=1}^{\infty}kp{(1-p)}^k-1 \\
+                      &=\sum_{k=1}^{\infty}\frac{d}{d\theta}{(1-\theta p)^k}|_{\theta=1} \\
+                      &=\frac{1}{p}
+                    \end{align}
+                    thus, the MLE of $p$ is $$\hat{p}=\frac{1}{\bar{X}}$$
+    \subsection{} The likelihood function is
+                    $$L(p|X)=f(X|p)c(x)=p^n{(1-p)}^{n(\bar{(X-1)}}$$
+                    Then we have
+                    $$I(p|X)=\ln L(p|X)=n\ln p+n(\bar{X}-1)\ln (1-p)$$
+                    First we find the maximum point in the interior:
+                    $$\frac{\partial}{\partial p} I(p|X)=0 \Rightarrow \hat{p}=\frac{1}{\bar{X}}$$
+                    It is also easy to check that $p=\frac{1}{\bar{X}}$ maximize the log-likelihood function.\\
+                    On the boundary, that is $p=0$ and $p=1$, the log-likelihood function goes to $-\infty$,thus the MLE of $p$ is
+                    $$\hat{p}= \frac{1}{\bar{X}}$$
+    \subsection{} When $n\rightarrow \infty$ ,we haveÂ£Âº
+                    $$Var(\hat{p} )\rightarrow \frac{1}{nI(\theta)}$$
+                    where $I(\theta)= Var(\frac{\partial\ln (f(x|\theta))}{\partial \theta})=\frac{n}{p^2(1-p)}$
+                    then the asymptotic variance of $\hat{p}$ is
+                    $$Var(\hat{p})=\frac{p^2(1-p)}{n^2}$$
+    \subsection{}the posterior pdf of $\hat{p}$ is:
+                \begin{align}
+                    \pi(\theta|X)&=\frac{L(\theta)p(\theta)}{\int L(\theta)p(\theta)d\theta} \\
+                         &=\frac{p^n {(1-p)}^{n(\bar{X}-1)}}{B(n+1,n(\bar{X}-1)+1)}
+                \end{align}
+                thus the expectation of $\hat{p}$ is
+                $$E\hat{p}=\frac{n+1}{n\bar{X}+2}$$
+\section{Problem 5}
+  This problem is similar to problem 4, using the result in problem 4, we have:
+  \subsection{}    The distribution is: $$P(X=k)=p{(1-p)}^{k-1}$$
+			 Thus,the moments method is: $$\hat{p}=\frac{1}{\bar{X}}=0.358$$
+  \subsection{}Since n=130 and $np>>1$, we can use central limit theorem and we have
+  		      $$\sqrt{n}(\hat{p}-p)\sim N(0,\frac{1}{I(p)})$$
+		      Thus the confidence interval with $100\%(1-\alpha)$ confidence level is
+		      $$[\hat{p}-\frac{Z_{\frac{\alpha}{2}}}{\sqrt{nI(p)}},\hat{p}+\frac{Z_{\frac{\alpha}{2}}}{\sqrt{nI(p)}}]$$
+		      that is,$[0.311,0.405]$
+  \subsection{} To do a goodness fit test, we use R to do a chi-squared test, whose codes and result are shown below:
+  			\paragraph{Codes}
+				\begin{figure}[H]
+				\includegraphics[width=0.8\linewidth]{1.png}
+				\end{figure}
+			\paragraph{The result}
+				\begin{figure}[H]
+				\includegraphics[width=0.8\linewidth]{2.png}
+				\end{figure}
+  \subsection{} According to problem 4, the posterior distribution is :
+  		\begin{align}
+                    \pi(\theta|X)&=\frac{L(\theta)p(\theta)}{\int L(\theta)p(\theta)d\theta} \\
+                         &=\frac{p^n {(1-p)}^{n(\bar{X}-1)}}{B(n+1,n(\bar{X}-1)+1)}
+                \end{align}
+                where $0\leq p\leq 1$. \\
+                Thus,the posterior mean is $$E\hat{p}=\frac{n+1}{n\bar{X}+2}$$
+                and the posterior standard deviation is
+                $$\sigma=\sqrt{\frac{(n+1)(n\bar{X}-n+1)}{{(n\bar{X}+2)}^2}(n\bar{X}+3)}$$
+\section{Problem 6}
+	\subsection{} Using the method of moments, we have:
+				$$EX^2=2{\sigma}^2$$
+				Thus, $$\hat{\sigma}=\sqrt{\frac{\bar{X^2}}{2}}$$
+	\subsection{} The likelihood function is:$$L(\sigma|X)=\frac{1}{2\sigma^n}exp(-\frac{\sum_{i=1}^n |X_i|}{\sigma})$$
+				To get the maximum point in the interior: $$\frac{\partial \ln L(\sigma|X)}{\partial \sigma}=0$$
+				That is,
+				$$\sigma=\bar{|X|}$$ and it is easy to find that $\sigma=\bar{|X|}$ is the maximum point. \\
+				On the boundary $\sigma=0$ and $\sigma=\infty$, the likelihood function goes to $-\infty$ \\
+				Thus $\sigma=\bar{|X|}$ is the global maximum, that is the MLE.
+	\subsection{} When $n\rightarrow \infty$
+				$$Var(\sigma)=\frac{1}{nVar(\frac{\partial \ln f(\theta|X)}{\partial \theta})}$$
+				We aslo have $$\ln f{(\theta|X)}=-n\sigma-\frac{\sum_{i=1}^n|X_i|}{\sigma}$$
+				Therefore, $Var(\hat{\sigma})=\frac{\sigma^2}{n}$
+	\subsection{} Since the joint pdf of $x^n$ is $\frac{1}{2\sigma^n}exp(-\frac{\sum_{i=1}^n |X_i|}{\sigma})$
+				We can find that $$T(X)=\sum_{i=1}^n|X_i|$$ is a sufficient statistic
+\section{Problem 7}
+	\subsection{}Using the moments method, we have $$EX=\int_{\theta}^{\infty}xe^(x-\theta)dx=\theta+1$$\
+				Therefore, $\hat{\theta}=\bar{X}-1$
+	\subsection{} The likelihood function is: $$L(\theta|X)=e^{-n(\bar{X}-\theta)}{I}{(min(X_i)-theta)}$$
+				To maximise to likelihood function, that is to attain its upper bound, we have$$\hat{\theta}=min{(x_i)}$$
+	\subsection{} From the discussion above, the likelihood function is positive if and only if $\theta \leq min(x_i)$
+	\subsection{} Since the joint pdf is $$f(x^n|\theta)=e^{-n(\bar{X}-\theta)}{I}({min(X_i)-\theta})$$ $T(x)=min(X_i)$ is a sufficient statistic.
+\end{document}
+

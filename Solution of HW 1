@@ -1,0 +1,99 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass {article}
+\usepackage{amsmath}
+\begin{document}
+Answer of Homework 1
+%Li Yutong \footnote{Student IDï¼š1600011431}}
+\section{Problem 1}
+   \subsection{}
+	Let$Y_j=\frac{X_j-\mu}{\sigma}$,then $Y_j \sim N(0,1)$ distribution,  thus
+	$$\bar{X} =\sigma \bar{Y}+\mu$$
+	$$ S^2=\frac {{\sigma}^2}{n-1} \sum\limits_{i=1}^{n} {(Y_i-\bar{Y})}^2$$
+	Let $Z_1=\bar{Y} $, and $ Z_i=Y_i- \bar{Y}$ $(i=2,3,...,n)$, then the joint pdf of $Z_i$ is
+	$$f(z_1,z_2,...,z_n)=f(y_1,y_2,...,y_n)={(\frac{1}{\sqrt{2\pi}})}^n exp(-\frac{ \sum\limits_{i=1}^{n} {Y_i}^2}{2})$$
+	notice that $${ \sum\limits_{i=2}^{n} {Z_i}}=\sum\limits_{i=2}^{n} {Y_i}- (n-1)\bar{Y}= \bar{Y}-Y_1$$
+	then we have
+	\begin{align}
+	\sum\limits_{i=1}^{n} {Y_i}^{2} & =\sum\limits_{i=1}^{n} {(Y_i-\bar{Y})}^2+n{\bar{Y}}^2\\
+	                                                    & =\sum\limits_{i=2}^{n} {(Y_i-\bar{Y})}^2+n{\bar{Y}}^2+{(\bar{Y}-Y_1)}^{2}\\
+	                                                    & =\sum\limits_{i=2}^{n} {Z_i}^{2}+({\sum\limits_{i=2}^{n} {Z_i}})^{2}+n{Z_1}^2
+ 	\end{align}	
+	therefore,$Z_1$ and other $Z_2$$(i=2,3,..,n)$ are independent, which implies $\bar{Y}$ and $\sum\limits_{i=1}^{n} {(Y_i-\bar{Y})}^2$ are independent, thus, $\bar{X}$ and $S^2$ are independent.
+    \subsection{}	
+      \subsubsection{}
+      Since $Y_i \sim N(0,1)$ distribution $(i=1,2,3,..,n)$The mgf of $Y_i$ is $$M_{Y_i}(t)=e^{-\frac{t^2}{2}},i=(1,2,...n)$$
+      there for the mgf of $\bar{Y}$ is
+      \begin{align}
+      			M_{\bar{Y}}(t)&=\prod\limits_{i=1}^{n} M_{Y_i}(\frac{t}{n})\\
+			                  &=e^{-\frac{t^2}{2n}}
+	\end{align}
+	which means $\bar{Y} \sim N(0,1)$ distribution,  thus $\bar{X} \sim N(\mu,\frac{{\sigma}^2}{n})$  distribution
+	\subsubsection{}
+	We already have $$\frac{(n-1)S^2}{{\sigma}^2}=\sum\limits_{i=1}^{n} {(Y_i-\bar{Y})}^2$$
+	and $$Y^n={(Y_1,Y_2,...,Y_n)}^T \sim N(0,I)$$	
+	Let T be a orthodox matrix $$T=\frac{1}{\sqrt{n}}\left (
+	\begin{matrix}
+		1 &1 & ...&1\\
+		... &...&...&...\\
+		... &...&...&...\\
+	\end{matrix}\right )$$
+	let $W^n=TY^n \sim N(0,I)$
+	then we have $W_1=\sqrt{n} \bar{Y}$ and $\sum\limits_{i=1}^{n} {W_i}^{2}=\sum\limits_{i=1}^{n} {Y_i}^{2} $
+	Hence,
+	\begin{align}
+		\frac{(n-1)S^2}{{\sigma}^2}&=\sum\limits_{i=1}^{n} {(Y_i-\bar{Y})}^2\\
+		                                          &=\sum\limits_{i=1}^{n} {Y_i}^2-n{\bar{Y}}^2\\
+		                                          &=\sum\limits_{i=2}^{n} {W_i}^2\
+	\end{align}
+	Since $W_i \sim N(0,1)   (i=1,2,...,n)$ distribution,  we have $\frac{(n-1)S^2}{{\sigma}^2} \sim {\chi}^2 (n-1)$	distribution
+\section{Problem 2}
+	Let $X_{(1)},X_{(2)},...,X_{(n)}$be the order statistics, then its joint distribution is
+	$$f(x_{(1)},x_{(2)},...,x_{(n)})=n!        (0 \leq x_{(1)}\leq x_{(2)}\leq ... \leq x_{(n)} \leq 1)$$
+	Thus, the pdf of $X_{(n)}$ is
+	\begin{align}
+	    f_{x_{(n)}}(x)&=\int \int ...\int f(x_{(1)},x_{(2)},...,x_{(n)})dx_{(1)}dx_{(2)}...dx_{(n-1)}\\
+	                  &=\int \int ...\int n! dx_{(1)}dx_{(2)}...dx_{(n-1)}\\
+	                  &=nx^{n-1}
+	\end{align}
+	notice that
+	\begin{align}
+		P(n(1-x_{(n)})<y)&=P(x_{(n)}>1-\frac{y}{n})\\
+		                           &=1-\int_0^{1-\frac{y}{n}} nx^{n-1}dx\\
+		                           &=1-(1-\frac{y}{n})^n
+	\end{align}
+	therefore,	$$\lim_{n\to\infty}P(x_{(n)}<1-\frac{y}{n})=e^{-y}$$
+	which shows $X_{(n)}$ converges in distribution to an exponential(1)
+\section{Problem 3}
+	These are random variables: The sample mean, the variance of the sample mean, the largest value in sample,and the population variance
+\section{Problem 4}
+  \subsection{}
+    According to the table, we have
+    $$P(X=1)=0.1+0.05+0.02+0.02=0.19$$
+    $$P(X=2)=0.05+0.2+0.05+0.02=0.32$$
+    $$P(X=3)=0.02+0.05+0.2+0.04=0.31$$
+    $$P(X=4)=0.02+0.02+0.04+0.1=0.18$$
+    and
+    $$P(Y=1)=0.1+0.05+0.02+0.02=0.19$$
+    $$P(Y=2)=0.05+0.2+0.05+0.02=0.32$$
+    $$P(Y=3)=0.02+0.05+0.2+0.04=0.31$$
+    $$P(Y=4)=0.02+0.02+0.04+0.1=0.18$$
+    \subsection{}
+    According to the table and the result above,
+    $$P(X=1|Y=1)=\frac{P(X=1,Y=1)}{P(Y=1)}=\frac{10}{19}$$
+    $$P(X=2|Y=1)=\frac{P(X=2,Y=1)}{P(Y=1)}=\frac{5}{19}$$
+    $$P(X=3|Y=1)=\frac{P(X=2,Y=1)}{P(Y=1)}=\frac{2}{19}$$
+    $$P(X=4|Y=1)=\frac{P(X=3,Y=1)}{P(Y=1)}=\frac{2}{19}$$
+    and
+    $$P(Y=1|X=1)=\frac{P(Y=1,X=1)}{P(X=1)}=\frac{10}{19}$$
+    $$P(Y=2|X=1)=\frac{P(Y=2,X=1)}{P(X=1)}=\frac{5}{19}$$
+    $$P(Y=3|X=1)=\frac{P(Y=2,X=1)}{P(X=1)}=\frac{2}{19}$$
+    $$P(Y=4|X=1)=\frac{P(Y=3,X=1)}{P(X=1)}=\frac{2}{19}$$
+\section{Problem 5}
+First, we consider the probability $P(A)$, $P(B)$ and $P(C)$:
+We have $$P(A)=P(B)=P(C)=\frac{1}{2}\times\frac{1}{2}\times2=\frac{1}{2}$$
+notice that $$A\cap B=B\cap C= A\cap C=A\cap B\cap C={ \text{{All the children have the same gene}} }$$
+therefore, we have $$P(AB)=P(BC)=P(CA)=P(ABC)={(\frac{1}{2})}^3\times 2=\frac{1}{4}$$
+thus, we have $P(AB)=P(A)P(B)$,  $P(BC)=P(B)P(C)$,    $P(CA)=P(C)P(A)$, but
+$$P(ABC)\neq P(A)P(B)P(C)$$
+which implies A,B and C are pairwise independent but not mutually independent
+\end{document}

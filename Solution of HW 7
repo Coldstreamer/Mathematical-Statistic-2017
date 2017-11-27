@@ -1,0 +1,70 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass{article}
+\begin{document}
+\title{Homewrok 7}
+\author{Li Yutong\footnote{Student ID 1600011431}}
+\maketitle
+\section{Problem 1}
+	\subsection{}
+	the power function is $$\beta(\theta)=P_\theta(x\in R)$$
+	The significance of the test is $$\alpha=\sup_{\theta\in\Theta_0}P_\theta(x\in R)=\frac{1}{2^9}$$
+	\subsection{}
+	the value of parameter is $\theta=0.1$ ,thus ,the power of the test is $$\beta(\theta)=P_\theta(x\in R)=\frac{1+9^{10}}{10^{10}}$$
+\section{Problem 2}
+	1. A composite hypothesis \\
+	2. A simple hypothesis \\
+	3. A composite hypothesis \\
+	4. A composite hypothesis \\
+\section{Problem 3}
+	\subsection{}
+	 According to the definition,
+	 $$\alpha=\sup_{\theta\in\Theta_0}P_\theta(x\in R) $$
+	Using the central limit theorem, noticing that $EX=50$ and $Var(x)=np(1-p)=25$
+	therefore we obtain
+	$$\alpha=\sup_{\theta\in\Theta_0}P_\theta(x\in R)=2\Phi(-2)=0.0455$$
+	\subsection{}
+	We have $EX=100P$, $Var(x)=np(1-p)$
+	The power function is
+	$$\beta(\theta)=P_\theta(x\in R)=\Phi(\frac{40-100P}{\sqrt{np(1-p)}})+\Phi(\frac{100P-60}{\sqrt{np(1-p)}})$$
+\section{Problem 4}
+	1. False. Significance level is the probability of making type I error,that is to reject the null hypothesis while it is true. \\
+	2. False. That may not occur when we use different statistics. \\
+	3. False.  Significance level is the probability of making type I error.  \\
+	4. False. The power of the test is the probability of rejecting the null hypothesis while the null hypothesis is false. \\
+	5. False. Type 1 error occurs when we reject the null hypothesis while it is true.\\
+	6. False. The power of a test is determined by the alternative distribution of the test statistic. \\
+	7. False. That depends.\\
+	8. True. The likelihood ratio is only a function of data.\\
+\section{Problem 5}
+	\subsection{}
+	The likelihood function is
+	$$\lambda(x)=\frac{\sup_{\theta\in\Theta_0}L(\theta|x)}{\sup_{\theta\in\Theta}L(\theta|x)}={(\frac{\hat{\sigma}}{\sigma_0})}^ne^{\frac{n}{2}}e^{\frac{-n\hat{\sigma}^2}{2\sigma_0^2}}$$
+	where $\hat{\sigma}=\frac{1}{n}\sum_{i=1}^nx_i^2$
+	\subsection{}
+	small value favours the null hypothesis.
+	\subsection{}
+	 $$P_{\theta\in\Theta_0}(\lambda(x)<c)=\alpha$$
+	 and we have
+$$
+	 \lambda(x)<c \Leftrightarrow  (\frac{\hat{\sigma}}{\sigma_0}>x_1)\cup(\frac{\hat{\sigma}}{\sigma_0}<x_2)
+$$
+	which is the rejection region, and $x_1$ and $x_2$ are two constants.
+\section{Problem 6}
+	The likelihood function is $$L(\theta|x)=\frac{1}{2}\lambda^nexp(-\lambda n\bar{|x|})$$
+	Thus the MLE of $\lambda$ is $\lambda=\frac{1}{\bar{|X|}}$
+	Therefore,we obtain that the ratio likelihood is
+	$$\lambda(x)={(\lambda_0\bar|X|)}^nexp(n(1-\lambda_0\bar{|X|}))$$
+\section{Problem 7}
+	\subsection{}
+	The likelihood function under $F_0$ is $L_0=x^2$ , and under $F_1$ is $L_1=x^3$
+	thus the likelihood ratio is $$\lambda(x)=\frac{F_0}{F_1}=\frac{1}{x}$$
+	\subsection{}
+	The reject region has the form $$\lambda(x)<c$$
+	that is, $x>c$
+	and according to the distribution,$P(x>c)=\alpha \Rightarrow \frac{1-c^3}{3}=\alpha$
+	that is, $c=(1-3\alpha)^{\frac{1}{3}}$
+	therefore, we obtain the rejection region $$x>(1-3\alpha)^{\frac{1}{3}}$$
+	\subsection{}
+	the power of the test is $$\beta=P_{F_1}(x\in R)$$
+	thus, $$\beta=\frac{1}{4}(1-(1-3\alpha)^{\frac{4}{3}})$$
+\end{document}

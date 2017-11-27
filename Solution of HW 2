@@ -1,0 +1,59 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass {article}
+\usepackage{amsmath}
+\title{Hoemwork\quad 2}
+\author{Li Yutong \footnote{Student IDï¼š1600011431}}
+\begin{document}
+\maketitle
+\section{Problem 1}
+   Let $X^n$ be $(X_1,X_2,...,X_n)$ , thus we have $$f(x^n|\mu, \theta)=
+   \begin{cases}
+   \frac{1}{{\sigma}^n} e^{-\frac{\sum_{i=1}^{n}x_i-n\mu}{\sigma}}$$&  \text{$\mu<x_i<\infty$  ,i=1,2,...,n }\\
+   0 \text{    ,otherwise}
+   \end{cases}$$
+   Therefore, we have a two-dimension sufficient statistic
+   $$T(x)=(\min_{i}{\{x_i\}},\sum_{i=1}^{n}{X_i})$$
+\section{Problem 2}
+	The pdf of $x$ is $$f(x|\sigma)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{x^2}{2\sigma}}$$
+	Let $$g(T(x);\sigma)=f(x|\sigma)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{{|x|}^2}{2\sigma}}$$
+	which implies $T(x)$ is a sufficient statistic
+\section{Problem 3}
+	Let $X^n=(X_1,X_2,...,X_n)$
+	\subsection{}
+		we have $$f(x|\theta)=
+		 \begin{cases}
+                 	e^{-({\sum_{i=1}^{n}x_i-n\mu})}&  \text{$\mu<x_i<\infty$  ,i=1,2,...,n }\\
+                  	0 \text{    ,otherwise}
+  		  \end{cases}$$
+   		Therefore,$\frac{f(x|\theta)}{f(y|\theta)}$ is independent of $\theta$  if and only if $\min_{i}{\{X_i\}}=\min_{i}{\{Y_i\}}$ ,\\
+	         which implies $T(x)=\min_{i}{\{X_i\}}$ is a minimal sufficient statistic
+	  \subsection{}
+	  	Let $f(x)=\frac{e^{-x}}{(1+e^{-x})^2}$, then we notice that $f(x|\theta)=f(x-\theta)$ , thus, according to the theorem in problem 5,
+		the order statistic $T(x)=(X_{(1)},X_{(2)},...,X_{(n)})$ is a minimal sufficient statistic
+	   \subsection{}
+	        Let $f(x)=\frac{1}{\pi(1+x^2)}$, then we notice that $f(x|\theta)=f(x-\theta)$ , thus, according to the theorem in problem 5,
+		the order statistic $T(x)=(X_{(1)},X_{(2)},...,X_{(n)})$ is a minimal sufficient statistic
+	   \subsection{}
+	        Suppose we have $$X_{(1)}\leq...\leq X_{(k)}\leq 0\leq ...\leq X_{(n)}$$
+	        then $$f(x^n|\theta)=exp^(\frac{X_{(1)}+...+X_{(k)}-X_{(k+1)}-...-X_{(n)}+n\theta-2k\theta}{2})$$
+	        Therefore,$\frac{f(x|\theta)}{f(y|\theta)}$ is independent of $\theta$  if and only if $k_x=k_y$ ,\\
+	        which implies $T(x)=\max_{k}{\{x_{(k)}\leq 0\}}$ is a minimal sufficient statistic
+\section{Problem 4}
+  	\subsection{}
+		Since $T_2$ is a minimal sufficient statistic and $T_1$  is a sufficient statistic, there is a function $T_2=g(T_1)$
+		Therefore,
+		\begin{align}
+			U_2&=E(U|T_2)\\
+			       &=E(U|g(T_1))\\
+			       &=E(E(U|T_1)|g(T_1))\\
+			       &=E(U_1|T_2)
+	         \end{align}
+	 \subsection{}
+	 	Since $U_2=E(U_1|T_2)$ ,thus
+		$$Var(U_1)=E(Var(U_1|T_2))+Var(E(U_1|T_2)) \geq Var(U_2)$$
+\section{Problem 5}
+	Since $X_i \sim f(x-\theta) $ , we have :
+	$$\frac{f(x^n|\theta)}{f(y^n|\theta)}=\frac{\prod_{i=1}^{n}f(x_i-\theta)}{\prod_{i=1}^{n}f(y_i-\theta)}$$
+	Since f is a function without further information , the fraction is independent of $\theta$ if and only if
+	$$\{x_1,x_2,...,x_n\}=\{y_1,y_2,...,y_n\}$$  which implies the order statistic $T(x)=(X_{(1)},X_{(2)},...,X_{(n)})$ is a sufficient statistic and no further reduction is possible
+\end{document}

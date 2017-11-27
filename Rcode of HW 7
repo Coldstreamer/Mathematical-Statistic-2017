@@ -1,0 +1,22 @@
+miu <- 1; sigma <- 1; miu0 <- 1
+n <- 100
+samp <- rnorm(n,mean=1,sd=1)
+MLE <- (mean(samp)-miu0)/(sd(samp)/sqrt(n-1))
+WALD <- n^2*(mean(samp)-miu0)^2*sd(samp)
+SCORE <- n^4*(mean(samp)-miu0)^2/sum((samp-miu0)^2) 
+p1 <- 1-pt(MLE,n-1)
+p2 <- pchisq(WALD,1)
+p3 <- pchisq(SCORE,1)
+
+
+alpha <- 0.05
+I <- vector(mode="logical",length=time)
+for(j in 1:time)
+ { data <- rpois(n,lam)
+   mean <- sum(data)/n
+   w <- n*mean*(mean-1)^2
+   I[j] <- (w>qchisq(1-alpha,1))
+}
+sum(I)/time
+   
+
